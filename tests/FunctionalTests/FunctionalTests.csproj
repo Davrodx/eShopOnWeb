@@ -9,28 +9,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Remove unnecessary Razor content -->
     <Compile Remove="WebRazorPages\**" />
     <EmbeddedResource Remove="WebRazorPages\**" />
     <None Remove="WebRazorPages\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Pin versions to .NET 8 line -->
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.21" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-    <PackageReference Include="xunit" Version="2.7.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.8">
+    <!-- Test dependencies (versions controlled centrally in Directory.Packages.props) -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <!-- References to other projects in the solution -->
     <ProjectReference Include="..\..\src\ApplicationCore\ApplicationCore.csproj" />
     <ProjectReference Include="..\..\src\PublicApi\PublicApi.csproj" />
     <ProjectReference Include="..\..\src\Web\Web.csproj" />
+  </ItemGroup>
+
+  <!-- Optional: GUID to uniquely identify this project -->
+  <ItemGroup>
+    <Service Include="{82A7488D-3B50-4B1E-B82E-3ADA8120C35B}" />
   </ItemGroup>
 
 </Project>
